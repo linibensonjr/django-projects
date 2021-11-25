@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>Hello</h3>
+    <form method="POST" action="/">
+      {%csrf_token %}
+      {{form}}
+      <input type="submit" value="Add">
+    </form>
+    {% for task in tasks %}
+      <a href="{% url 'update' task.id %}"<p>{{ task.task }}</p></a>
+    {% endfor %}
+  </body>
+</html>
