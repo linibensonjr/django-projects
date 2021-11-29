@@ -5,14 +5,29 @@
     <title></title>
   </head>
   <body>
-    <h3>Hello</h3>
+    <h2>Todo List</h2>
     <form method="POST" action="/">
       {%csrf_token %}
       {{form}}
       <input type="submit" value="Add">
     </form>
-    {% for task in tasks %}
-      <a href="{% url 'update' task.id %}"<p>{{ task.task }}</p></a>
-    {% endfor %}
+    <table>
+      <thead colspan="12">
+        <th colspan="12">Task</th>
+        <th colspan="11">Status</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+      
+        <tr rowspan="4">
+        <td>{{ task.task }}</td>
+        <td>{{ task.completed }}</td>
+        <td><a href="{% url 'update' task.id %}"<p>Edit</p></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
   </body>
 </html>
